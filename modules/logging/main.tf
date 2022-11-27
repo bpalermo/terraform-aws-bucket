@@ -2,7 +2,9 @@ module "bucket" {
   source = "../.."
   bucket = var.bucket
 
-  acl           = "log-delivery-write"
+  acl              = "log-delivery-write"
+  object_ownership = "BucketOwnerPreferred"
+
   force_destroy = var.force_destroy
   policy        = var.policy
 

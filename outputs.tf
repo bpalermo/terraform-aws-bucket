@@ -11,7 +11,7 @@ output "bucket" {
 }
 
 output "acl" {
-  value = aws_s3_bucket_acl.this.acl
+  value = var.object_ownership == "BucketOwnerEnforced" ? "" : aws_s3_bucket_acl.this[0].acl
 }
 
 output "domain_name" {
