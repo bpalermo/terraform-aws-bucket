@@ -23,7 +23,7 @@ output "bucket_regional_domain_name" {
 }
 
 output "website_endpoint" {
-  value = var.enable_website ? aws_s3_bucket.this.website_endpoint : ""
+  value = var.enable_website ? aws_s3_bucket_website_configuration.this[0].website_endpoint : ""
 }
 
 output "kms_key_id" {

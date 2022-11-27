@@ -63,6 +63,21 @@ resource "aws_s3_bucket_ownership_controls" "this" {
   }
 }
 
+resource "aws_s3_bucket_logging" "this" {
+  count         = var.logging_target_bucket != "" && var.logging_target_prefix != "" ? 1 : 0
+  bucket        = aws_s3_bucket.this.id
+  target_bucket = var.logging_target_bucket
+  target_prefix = var.logging_target_prefix
+}
+
+resource "aws_s3_bucket_versioning" "this" {
+  bucket = aws_s3_bucket.this.id
+
+  versioning_configuration {
+    status = var.versioning_enabled ? "Enabled" : "Disabled"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "this" {
   bucket = aws_s3_bucket.this.id
 

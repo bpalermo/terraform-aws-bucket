@@ -104,3 +104,21 @@ variable "object_ownership" {
   type        = string
   default     = "BucketOwnerEnforced"
 }
+
+variable "logging_target_bucket" {
+  description = "The name of the bucket where you want Amazon S3 to store server access logs (optional)."
+  type        = string
+  default     = ""
+}
+
+variable "logging_target_prefix" {
+  description = "A prefix for all log object keys (optional)."
+  type        = string
+  default     = ""
+}
+
+variable "versioning_enabled" {
+  description = "The versioning state of the bucket (default: false)."
+  type        = bool
+  default     = false
+}
